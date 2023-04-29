@@ -1,6 +1,5 @@
 class ProductManager{
-    constructor(products){
-        this.products = products
+    constructor(){
         this.products = []
     }
 
@@ -44,7 +43,10 @@ class ProductManager{
             console.log('Not Found');
             return
         }
-        // this.products[compraIndex].product.push(id)
+        
+        // console.log(this.products[compraIndex]);
+        // console.log(id);
+        // this.products[compraIndex].product.push(code)
     }  
     
     // removerProducto(product){
@@ -54,11 +56,6 @@ class ProductManager{
 }
 
 const manejador = new ProductManager()
+manejador.addProduct('Producto de prueba', 'prueba', 200, 'Sin imagen', 'abc123', 25 )
+manejador.addProduct(1)
 console.log(manejador.getProducts())
-manejador.addProduct('Producto de prueba', 'prueba', 200, 'Sin imagen', 'abc123', 25 )
-manejador.getProductById(1)
-console.log(manejador.getProducts());
-manejador.addProduct('Producto de prueba', 'prueba', 200, 'Sin imagen', 'abc123', 25 )
-// manejador.addProduct('Producto de prueba', 'prueba', 200, 'Sin imagen', 'abc123', 25 )
-manejador.getProductById(2)
-// manejador.getProductById(3)
