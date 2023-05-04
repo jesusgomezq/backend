@@ -1,6 +1,7 @@
 class ProductManager{
     constructor(){
         this.products = []
+        this.productoId = 0
     }
 
     getProducts(){
@@ -11,17 +12,18 @@ class ProductManager{
 
     addProduct(title, description, price, thumbnail, code, stock){
 
-        if(!title || !description || !price || !thumbnail || !code || !stock) {
-            console.log('Producto no encontrado');
+        if(!(title && description && price && thumbnail && code && stock)) {
+            console.log('Error producto no existente, ingrese un valor valido');
             return
         }
 
-        if(this.products.find(product => product.code === code)) {
-            console.log('El producto ya existe');
+        if(this.products.some(product => product.code === code)) {
+            console.log('Error: el producto ya existe');
             return 
         }
        
         const product ={
+            id: ++this.productoId,
             title,
             description,
             price,
@@ -30,32 +32,22 @@ class ProductManager{
             stock,
         }
 
-        this.products.length === 0
-        ? product.id =1
-        : product.id = this.products[this.products.length -1].id +1
-
         this.products.push(product)
     }
 
     getProductById(id){
-        const compraIndex = this.products.findIndex(product => product.id === id)
-        if(compraIndex === -1){
-            console.log('Not Found');
-            return
-        }
+        const product = this.products.find(product => product.id === id)
+       if(!product){
+        console.log(`Error: el producto con el id ${id} no existe`);
+        return
+       }
+       return product
         
-        // console.log(this.products[compraIndex]);
-        // console.log(id);
-        // this.products[compraIndex].product.push(code)
     }  
     
-    // removerProducto(product){
-    //     const remover = this.products.indexOf(product)
-    //     remover !== -1 ? this.products.splice(product, 1) : console.log('Error papa');
-    // }
+
 }
 
 const manejador = new ProductManager()
-manejador.addProduct('Producto de prueba', 'prueba', 200, 'Sin imagen', 'abc123', 25 )
-manejador.addProduct(1)
+manejador.addProduct('producto prueba 1', 'producto prueba', 200, 'sin titulo', 'abc123', 20)
 console.log(manejador.getProducts())
