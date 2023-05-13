@@ -1,15 +1,16 @@
 // importamos fs
 import fs from 'fs'
+import { get } from 'http'
 
 const path = './archivo/products.json'
 
 // Creamos la clase ProductManager con su respectivo constructor
 
 export default class ProductManager {
-    // constructor() {
-    //     this.products = []
-    //     this.productoId = 0
-    // }
+    constructor() {
+        this.products = []
+        this.productoId = 0
+    }
 
     // En este punto hacemos el llamado a nuestros productos
     getProducts = async () => {
@@ -62,29 +63,23 @@ export default class ProductManager {
         }
         this.products.splice(index, 1)
     }
-}
-// Agregamos productos por su id 
-getProductById = async (articulo) => {
-    const articulo = await this.addProduct()
-    if (articulo.length == 0) {
-        articulo.id = 1
-    } else {
-        articulo.id = products[product.leng - 1].id + 1
+
+    // Agregamos productos por su id 
+    async getProductById() {
+        const products = await this.getProducts(id);
+        if (products.length === 0) {
+            return { id: 1 };
+        } else {
+            const lastProduct = products[products.length - 1];
+            const newId = lastProduct.id + 1;
+            return { id: newId };
+        }
     }
-    products.push(articulo)
-    await fs.promises.writeFile(path, JSON.stringify(products, null, '\t'))
-    return articulo
+}
 
-    //     // Validamos que el id del producto no se repita 
-    //    if(!product){
-    //     console.log(`Error: el producto con el id ${id} no existe`);
-    //     return
-    //    }
-    //    return product
-
-}  
 
 const manejador = new ProductManager()
+
 const prueba = async () => {
     let consulta1 = await manejador.getProducts()
     console.log(consulta1);
@@ -96,9 +91,11 @@ const prueba = async () => {
         año: 2023
     }
 
-    let result = await manejador.getProducts(article)
-    console.log(result);
+    // let result = await manejador.getProducts(article)
+    // console.log(result);
+
+    manejador.addProduct(article.title, article.description, article.price, article.thumbnail, article.code, article.stock)
+    console.log(await manejador.getProducts());
 }
-// manejador.addProduct('producto prueba 1', 'producto prueba', 200, 'sin titulo', 'abc123', 20)
-// console.log(manejador.getProducts()) 
+
 prueba()
