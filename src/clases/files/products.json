@@ -1,0 +1,35 @@
+[
+    {
+        "nombre": "cool bazar",
+        "articulo": "sarten",
+        "codigo": 5405,
+        "imagen": "sin imagen",
+        "precio": 4000,
+        "id": 1
+    },
+    {
+        "nombre": "Tramontina",
+        "articulo": "Bifera",
+        "codigo": 3514,
+        "imagen": "sin imagen",
+        "precio": 5500,
+        "id": 2
+    },
+    {
+        "nombre": "Crystal Rock",
+        "articulo": "Vaso",
+        "codigo": 8282,
+        "imagen": "sin imagen",
+        "precio": 500,
+        "id": 3
+    },
+    {
+        "nombre": "Cazux",
+        "articulo": "Rebanador Mandolin",
+        "codigo": 605,
+        "imagen": "sin imagen",
+        "precio": 3400,
+        "id": 4
+    }
+   
+]
