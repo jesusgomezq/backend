@@ -1,5 +1,5 @@
 import express from "express";
-import ProductsManager from "./clases/ProductManager.js";
+import ProductsManager from "./ProductManager.js";
 
 const app = express()
 
@@ -9,6 +9,11 @@ app.get('/products', async (req, res)=>{
     res.send(products)
 })
 
-app.listen(8080, ()=>{
+app.get('/products/:id', async (req, res) =>{
+    const products = await ProductManager.consultarPorId(req.params.id)
+    res.send(products)
+})
+
+app.listen(8080, () => {
     console.log('Servidor levanatdo');
 })
