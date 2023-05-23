@@ -37,7 +37,7 @@ const lectura = async (path) => {
 }
 
 // Creamos la clase ProductManager con su respectivo constructor
-export default class ProductManager {
+export default class ProductsManager {
     constructor(path) {
         this.path = path
     }
@@ -165,8 +165,8 @@ const prueba = async () => {
             id: 2
         }
 
-        const path = './clases/flie/products.json'
-        const manager = new ProductManager(path)
+        const path = './flie/products.json'
+        const manager = new ProductsManager(path)
         console.log(await manager.addProduct(article));
         console.log(await manager.upDateProduct(article2))
         console.log(await manager.getProducts());

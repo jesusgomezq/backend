@@ -1,5 +1,5 @@
 import express from "express";
-import ProductsManager from "./ProductManager.js";
+import ProductsManager from "./ProductsManager.js";
 
 const app = express()
 
