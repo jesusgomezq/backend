@@ -1,5 +1,4 @@
 // importamos fs
-
 import fs from 'fs'
 
 // creamos ela rchivo para ser guardado en un array
@@ -166,7 +165,7 @@ const prueba = async () => {
             id: 2
         }
 
-        const path = './archivo/products.json'
+        const path = './clases/flie/products.json'
         const manager = new ProductManager(path)
         console.log(await manager.addProduct(article));
         console.log(await manager.upDateProduct(article2))
